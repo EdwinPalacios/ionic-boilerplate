@@ -1,11 +1,16 @@
 {
-  "rules": {
-    "no-duplicate-variable": true,
-    "no-unused-variable": [
-      true
-    ]
-  },
-  "rulesDirectory": [
-    "node_modules/tslint-eslint-rules/dist/rules"
-  ]
+	"rules": {
+		"trailing-comma": [false, {
+			"multiline": "always",
+			"singleline": "never"
+		}],
+		"interface-name": [false, "always-prefix"],
+		"no-duplicate-variable": true,
+		"no-unused-variable": [
+			true
+		]
+	},
+	"rulesDirectory": [
+		"node_modules/tslint-eslint-rules/dist/rules"
+	]
 }
