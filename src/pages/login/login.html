@@ -17,6 +17,10 @@
 							<ion-input formControlName="email" type="email" placeholder="Correo electrónico *"></ion-input>
 						</ion-item>
 
+						<div *ngIf="formErrors.email" class="alert alert-danger light">
+							{{ formErrors.email }}
+						</div>
+
 						<!-- <div *ngIf="email.hasError('required') && email.touched">
 							<p>Sorry, field email is required!</p>
 						</div> -->
@@ -27,6 +31,10 @@
 							</ion-label>
 							<ion-input formControlName="password" type="password" placeholder="Contraseña *"></ion-input>
 						</ion-item>
+
+						<div *ngIf="formErrors.password" class="alert alert-danger">
+							{{ formErrors.password }}
+						</div>
 
 					</ion-list>
 				</ion-col>

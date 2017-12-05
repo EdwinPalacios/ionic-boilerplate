@@ -8,6 +8,7 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 	selector: 'page-login',
 	templateUrl: 'login.html',
 })
+
 export class LoginPage {
 
 	loading: Loading;
@@ -15,6 +16,23 @@ export class LoginPage {
 	authForm: FormGroup;
 	email: AbstractControl;
 	password: AbstractControl;
+
+	formErrors = {
+		'email': '',
+		'password': ''
+	};
+
+	validationMessages = {
+		'email': {
+			'required': 'email is required.',
+			'email': 'email is not valid',
+			'minlength': 'minimum password length is 8!',
+			'maxlength': 'maximum password length is 30!'
+		},
+		'password': {
+			'required': 'Password is required.'
+		}
+	};
 
 	constructor(
 		public navCtrl: NavController,
@@ -24,6 +42,7 @@ export class LoginPage {
 		public alertCtrl: AlertController,
 		private formBuilder: FormBuilder
 	) {
+
 		this.authForm = this.formBuilder.group({
 			email: ['', Validators.compose([Validators.required, Validators.email, Validators.minLength(8), Validators.maxLength(30)])],
 			password: ['', Validators.compose([Validators.required])]
@@ -31,6 +50,10 @@ export class LoginPage {
 
 		this.email = this.authForm.controls['email'];
 		this.password = this.authForm.controls['password'];
+
+		this.authForm.valueChanges.subscribe(data => this.onValueChanged(data));
+		this.onValueChanged();
+
 	}
 
 	ionViewDidLoad() {
@@ -40,9 +63,7 @@ export class LoginPage {
 	public login(value: any): void {
 
 		if (this.authForm.valid) {
-
 			this.showLoading();
-
 		}
 
 	}
@@ -54,5 +75,34 @@ export class LoginPage {
 		});
 		this.loading.present();
 	}
+
+	onValueChanged(data?: any) {
+
+		if (!this.authForm) {
+			return;
+		}
+
+		const form = this.authForm;
+		if (form.pristine) {
+			return;
+		}
+
+		if (!form.dirty) {
+			return;
+		}
+
+		for (const field in this.formErrors) {
+			this.formErrors[field] = '';
+			const control = form.controls[field];
+			if (control && control.dirty && !control.valid) {
+				const messages = this.validationMessages[field];
+				for (const key in control.errors) {
+					if (messages[key]) this.formErrors[field] = messages[key];
+				}
+			}
+		}
+
+	}
+
 
 }
