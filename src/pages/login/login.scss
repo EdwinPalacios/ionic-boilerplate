@@ -1,0 +1,89 @@
+.md,
+.ios {
+    page-login {
+        background: url(../assets/img/background-5.jpg) no-repeat center;
+        background-size: cover;
+        .scroll-content {
+            @include verticalCentered();
+            flex-direction: column;
+        }
+        .login-content {
+            background-color: transparent;
+            .cont_logo {
+                height: 35vh;
+                width: 80%;
+                padding: 5% 3%;
+            }
+            ion-img,
+            ion-img.img-loaded img {
+                height: 100%;
+                width: 100%;
+            }
+            .login-box {
+                width: 70%;
+            }
+            ion-row {
+                align-items: center;
+                text-align: center;
+            }
+            ion-item {
+                padding-left: 25px !important;
+                margin-bottom: em(30);
+                border: 1px solid #fff;
+                background-color: transparent;
+                & .item-inner {
+                    border: none !important;
+                }
+                ion-label {
+                    color: color($colors, light);
+                }
+                &.error-border {
+                    border: 1px solid color($colors, danger);
+                }
+            }
+            ion-input {
+                color: #fff;
+                & input {
+                    &::-webkit-input-placeholder {
+                        color: color($colors, light);
+                    }
+                    &:-moz-placeholder {
+                        color: color($colors, light);
+                    }
+                }
+            }
+            .item-inner {
+                border-bottom-color: #fff !important;
+                box-shadow: none !important;
+            }
+            .forgot {
+                text-decoration: underline;
+            }
+            .signup-col {
+                margin: 0px 16px 0px 16px;
+                padding-bottom: 20px;
+            }
+            .submit-btn {
+                border: 0;
+            }
+        }
+        ion-footer {
+            height: 47px;
+        }
+        .footer {
+            text-align: center;
+            background: transparent;
+            min-height: 47px;
+            color: #fff;
+            &:before {
+                background: transparent;
+                background-image: none;
+            }
+        }
+        .toolbar,
+        .toolbar-background {
+            background: transparent;
+            background-image: none;
+        }
+    }
+}

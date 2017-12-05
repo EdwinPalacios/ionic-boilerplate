@@ -80,11 +80,13 @@ $colors: (
 
 // @import "ionic.ionicons";
 
-$icons-font-family: "iconmoon" !default;
-@import "icons";
+// $icons-font-family: "iconmoon" !default;
+// @import "icons";
 
 // Fonts
 // --------------------------------------------------
 
 @import "roboto";
 // @import "noto-sans";
+
+@import "./mixins";

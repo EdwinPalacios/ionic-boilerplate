@@ -3,14 +3,18 @@ import { AlertController, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { ENV } from '@app/env';
+
+
 @Component({
 	templateUrl: 'app.html'
 })
 
 export class MyApp {
 
-	rootPage: string = 'HomePage';
+	rootPage: string = 'LoginPage';
 	alert;
+	chosenPicture = 'https://avatars1.githubusercontent.com/u/8704016';
 
 	@ViewChild(Nav) nav: Nav;
 
@@ -22,6 +26,8 @@ export class MyApp {
 	) {
 
 		this.platform.ready().then(() => {
+
+			console.log(ENV.mode);
 
 			// Okay, so the platform is ready and our plugins are available.
 			// Here you can do any higher level native things you might need.
