@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController, MenuController, LoadingController, Loading, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 
@@ -40,7 +41,8 @@ export class LoginPage {
 		public menuCtrl: MenuController,
 		private loadingCtrl: LoadingController,
 		public alertCtrl: AlertController,
-		private formBuilder: FormBuilder
+		private formBuilder: FormBuilder,
+		public translate: TranslateService
 	) {
 
 		this.authForm = this.formBuilder.group({

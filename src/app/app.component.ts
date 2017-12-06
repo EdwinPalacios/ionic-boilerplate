@@ -2,9 +2,10 @@ import { Component, ViewChild } from '@angular/core';
 import { AlertController, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Storage } from '@ionic/storage';
+import { TranslateService } from '@ngx-translate/core';
 
 import { ENV } from '@app/env';
-
 
 @Component({
 	templateUrl: 'app.html'
@@ -14,6 +15,7 @@ export class MyApp {
 
 	rootPage: string = 'LoginPage';
 	alert;
+
 	chosenPicture = 'https://avatars1.githubusercontent.com/u/8704016';
 
 	@ViewChild(Nav) nav: Nav;
@@ -22,8 +24,18 @@ export class MyApp {
 		private platform: Platform,
 		private statusBar: StatusBar,
 		private splashScreen: SplashScreen,
-		private alertCtrl: AlertController
+		private alertCtrl: AlertController,
+		private storage: Storage,
+		private translate: TranslateService
 	) {
+
+		this.storage.get('AppLangcode').then((AppLangcode) => {
+			if (AppLangcode == null) {
+				this.translate.setDefaultLang('en');
+			} else {
+				this.translate.setDefaultLang(AppLangcode);
+			}
+		});
 
 		this.platform.ready().then(() => {
 

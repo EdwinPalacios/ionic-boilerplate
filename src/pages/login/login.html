@@ -14,22 +14,18 @@
 							<ion-label>
 								<ion-icon name="email"></ion-icon>
 							</ion-label>
-							<ion-input formControlName="email" type="email" placeholder="Correo electrónico *"></ion-input>
+							<ion-input formControlName="email" type="email" placeholder="Email *"></ion-input>
 						</ion-item>
 
 						<div *ngIf="formErrors.email" class="alert alert-danger light">
 							{{ formErrors.email }}
 						</div>
 
-						<!-- <div *ngIf="email.hasError('required') && email.touched">
-							<p>Sorry, field email is required!</p>
-						</div> -->
-
 						<ion-item [ngClass]="{ 'error-border': !authForm.controls.password.valid && authForm.controls.password.touched }">
 							<ion-label>
 								<ion-icon name="lock"></ion-icon>
 							</ion-label>
-							<ion-input formControlName="password" type="password" placeholder="Contraseña *"></ion-input>
+							<ion-input formControlName="password" type="password" placeholder="Password *"></ion-input>
 						</ion-item>
 
 						<div *ngIf="formErrors.password" class="alert alert-danger">
@@ -49,7 +45,7 @@
 			<ion-row>
 				<ion-col>
 					<div class="light forgot">
-						Olvidé contraseña
+						Forgot your password?
 					</div>
 				</ion-col>
 			</ion-row>
