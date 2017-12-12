@@ -1,3 +1,11 @@
 {
-	"HELLO": "Hello"
+	"BACK_BUTTON_TEXT": "Back",
+
+	"EMAIL": "Email",
+	"USERNAME": "Username",
+	"PASSWORD": "Password",
+	"LOGIN": "Sign in",
+	"SIGNUP": "Sign up",
+
+	"FORGOT": "Forgot your password?"
 }

@@ -29,12 +29,27 @@ export class MyApp {
 		private translate: TranslateService
 	) {
 
+		this.translate.setDefaultLang('en');
+
 		this.storage.get('AppLangcode').then((AppLangcode) => {
+
 			if (AppLangcode == null) {
-				this.translate.setDefaultLang('en');
+
+				const browserLang = this.translate.getBrowserLang();
+				const browserCultureLang = this.translate.getBrowserCultureLang();
+
+				console.log(browserLang, browserCultureLang);
+
+				if (browserLang) {
+					this.translate.use(this.translate.getBrowserLang());
+				} else {
+					this.translate.use('en');
+				}
+
 			} else {
-				this.translate.setDefaultLang(AppLangcode);
+				this.translate.use(AppLangcode);
 			}
+
 		});
 
 		this.platform.ready().then(() => {
