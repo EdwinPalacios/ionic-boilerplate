@@ -1,0 +1,73 @@
+.ios,
+.md {
+    page-splash {
+        .scroll-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #H14B2TxwG * {
+            fill: #0A86F8;
+            animation-duration: 4s;
+            animation-timing-function: cubic-bezier(0, 0, 1, 1);
+        }
+        #BkW4S26ePG_B1mC36evz {
+            animation-name: BkW4S26ePG_B1mC36evz_Animation;
+        }
+        #BJlNr2pxPz {
+            animation-name: BJlNr2pxPz_Animation;
+        }
+        #BkW4S26ePG_HJwLATlwf {
+            animation-name: BkW4S26ePG_HJwLATlwf_Animation;
+        }
+    }
+}
+
+@keyframes BkW4S26ePG_HJwLATlwf_Animation {
+    72.50% {
+        transform: scale(1, 1);
+        transform-box: fill-box;
+        transform-origin: 50% 50%;
+    }
+    81.67% {
+        transform: scale(1.03, 1.03);
+        transform-box: fill-box;
+        transform-origin: 50% 50%;
+    }
+    100% {
+        transform: scale(1.03, 1.03);
+        transform-box: fill-box;
+        transform-origin: 50% 50%;
+    }
+}
+
+@keyframes BJlNr2pxPz_Animation {
+    87.50% {
+        opacity: 1;
+        transform-box: fill-box;
+        transform-origin: 50% 50%;
+    }
+    100% {
+        opacity: 0;
+        transform-box: fill-box;
+        transform-origin: 50% 50%;
+    }
+}
+
+@keyframes BkW4S26ePG_B1mC36evz_Animation {
+    0% {
+        transform: rotate(0deg);
+        transform-box: fill-box;
+        transform-origin: 50% 50%;
+    }
+    68.33% {
+        transform: rotate(360deg);
+        transform-box: fill-box;
+        transform-origin: 50% 50%;
+    }
+    100% {
+        transform: rotate(360deg);
+        transform-box: fill-box;
+        transform-origin: 50% 50%;
+    }
+}

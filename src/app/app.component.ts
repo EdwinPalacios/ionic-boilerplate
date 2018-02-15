@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { AlertController, Nav, Platform } from 'ionic-angular';
+import { AlertController, Nav, Platform, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
@@ -15,6 +15,7 @@ export class MyApp {
 
 	rootPage: string = 'LoginPage';
 	alert;
+	showSplash = true;
 
 	chosenPicture = 'https://avatars1.githubusercontent.com/u/8704016';
 
@@ -26,31 +27,11 @@ export class MyApp {
 		private splashScreen: SplashScreen,
 		private alertCtrl: AlertController,
 		private storage: Storage,
-		private translate: TranslateService
+		private translate: TranslateService,
+		private modalCtrl: ModalController
 	) {
 
 		this.translate.setDefaultLang('en');
-
-		this.storage.get('AppLangcode').then((AppLangcode) => {
-
-			if (AppLangcode == null) {
-
-				const browserLang = this.translate.getBrowserLang();
-				const browserCultureLang = this.translate.getBrowserCultureLang();
-
-				console.log(browserLang, browserCultureLang);
-
-				if (browserLang) {
-					this.translate.use(this.translate.getBrowserLang());
-				} else {
-					this.translate.use('en');
-				}
-
-			} else {
-				this.translate.use(AppLangcode);
-			}
-
-		});
 
 		this.platform.ready().then(() => {
 
@@ -59,6 +40,13 @@ export class MyApp {
 			// Okay, so the platform is ready and our plugins are available.
 			// Here you can do any higher level native things you might need.
 			this.statusBar.styleDefault();
+
+			if (this.showSplash) {
+				let splash = this.modalCtrl.create('SplashPage');
+				splash.present();
+			} else {
+				this.splashScreen.hide();
+			}
 
 			/**
  			* Boton atras para cerrar
@@ -89,6 +77,27 @@ export class MyApp {
 				}
 			});
 
+
+		});
+
+		this.storage.get('AppLangcode').then((AppLangcode) => {
+
+			if (AppLangcode == null) {
+
+				const browserLang = this.translate.getBrowserLang();
+				const browserCultureLang = this.translate.getBrowserCultureLang();
+
+				console.log(browserLang, browserCultureLang);
+
+				if (browserLang) {
+					this.translate.use(this.translate.getBrowserLang());
+				} else {
+					this.translate.use('en');
+				}
+
+			} else {
+				this.translate.use(AppLangcode);
+			}
 
 		});
 
@@ -131,8 +140,5 @@ export class MyApp {
 		toast.present();
 	} */
 
-	ngAfterViewInit() {
-		this.splashScreen.hide();
-	}
 }
 
